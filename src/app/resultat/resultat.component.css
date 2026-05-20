@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  font-family: Georgia, serif;
+}
+
+.resultats-page {
+  padding: 20px;
+}
+
+.page-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}

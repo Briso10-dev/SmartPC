@@ -1,0 +1,50 @@
+<div class="detail-card" *ngIf="pc">
+  <div class="detail-header">
+    <h2 class="detail-title">{{ pc.nom }} - {{ pc.prix }}€</h2>
+  </div>
+
+  <div class="detail-body">
+    <div class="detail-image">
+      <img [src]="pc.image" [alt]="pc.nom" />
+    </div>
+
+    <div class="detail-specs">
+      <div class="spec-row">
+        <span class="spec-label">RAM</span>
+        <span class="spec-value">{{ pc.specs.ram }} Go</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">CPU</span>
+        <span class="spec-value">{{ pc.specs.cpu }}</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Stockage</span>
+        <span class="spec-value">{{ pc.specs.ssd }} Go SSD</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Ecran</span>
+        <span class="spec-value">{{ pc.specs.ecran }} pouces</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Autonomie</span>
+        <span class="spec-value">{{ pc.specs.autonomie }}h</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Poids</span>
+        <span class="spec-value">{{ pc.specs.poids }} kg</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Prix</span>
+        <span class="spec-value">{{ pc.prix }}€</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-extra">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="detail-actions">
+    <button type="button" class="back-btn" (click)="revenir()">← Retour</button>
+  </div>
+</div>

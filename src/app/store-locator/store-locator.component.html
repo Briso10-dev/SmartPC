@@ -1,0 +1,8 @@
+<div class="store-box" *ngIf="magasins.length > 0">
+  <p class="store-title">Disponible en magasin :</p>
+  <div class="store-list">
+    <span class="store-badge" *ngFor="let magasin of magasins">
+      📍 {{ magasin.nom }} ({{ magasin.distance }})
+    </span>
+  </div>
+</div>

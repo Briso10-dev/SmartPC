@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  font-family: Georgia, serif;
+}
+
+.store-box {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.store-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: #333333;
+}
+
+.store-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.store-badge {
+  border: 1px solid #bdbdbd;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  background: #f7f7f7;
+}

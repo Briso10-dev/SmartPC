@@ -1,0 +1,15 @@
+<div class="pc-card" *ngIf="pc">
+  <div class="pc-image">
+    <img [src]="pc.image" [alt]="pc.nom" />
+  </div>
+
+  <div class="pc-content">
+    <h3 class="pc-title">{{ pc.nom }}</h3>
+    <p class="pc-specs">{{ specsResume }}</p>
+
+    <div class="pc-footer">
+      <button type="button" class="pc-btn" (click)="voirDetail()">Voir le detail</button>
+      <span class="pc-price">{{ pc.prix }}€</span>
+    </div>
+  </div>
+</div>

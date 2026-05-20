@@ -1,0 +1,25 @@
+<div class="resultats-page">
+  <h2 class="page-title">Resultats</h2>
+
+  <div *ngIf="!pcSelectionne" class="pc-grid">
+    <app-pc-card
+      *ngFor="let pc of resultats"
+      [pc]="pc"
+      (pcSelectionne)="afficherDetail($event)"
+    ></app-pc-card>
+  </div>
+
+  <div *ngIf="pcSelectionne">
+    <app-product-detail [pc]="pcSelectionne" (retour)="retourListe()">
+      <app-recommendation-explanation
+        *ngIf="mode === 'guided'"
+        [explication]="explication"
+      ></app-recommendation-explanation>
+
+      <app-store-locator
+        *ngIf="mode === 'guided'"
+        [magasins]="pcSelectionne.magasins"
+      ></app-store-locator>
+    </app-product-detail>
+  </div>
+</div>

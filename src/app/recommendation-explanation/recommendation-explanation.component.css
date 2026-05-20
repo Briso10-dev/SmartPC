@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  font-family: Georgia, serif;
+}
+
+.explanation {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #d6e4f7;
+  border: 1px solid #1f5fa6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.text {
+  margin: 0;
+  font-style: italic;
+  color: #1f5fa6;
+}

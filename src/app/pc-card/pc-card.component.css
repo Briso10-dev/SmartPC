@@ -1,0 +1,67 @@
+:host {
+  display: block;
+  font-family: Georgia, serif;
+}
+
+.pc-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.pc-image {
+  height: 120px;
+  background: #f2f2f2;
+}
+
+.pc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pc-content {
+  padding: 12px 14px;
+}
+
+.pc-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pc-specs {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #555555;
+}
+
+.pc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pc-btn {
+  background: #1f5fa6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pc-btn:hover {
+  background: #184c86;
+}
+
+.pc-price {
+  color: #1f5fa6;
+  font-weight: 700;
+}
