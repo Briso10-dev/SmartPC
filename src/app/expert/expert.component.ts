@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pc } from '../models/pc.model';
 import { FiltresExpert, PcService } from '../services/pc.service';
 
@@ -12,7 +13,7 @@ export class ExpertComponent {
 
   public pcsFiltres: Pc[] = [];
 
-  constructor(private pcService: PcService) {
+  constructor(private pcService: PcService, private router: Router) {
     this.pcsFiltres = this.pcService.getAllPcs();
   }
 
@@ -21,7 +22,16 @@ export class ExpertComponent {
   }
 
   public onPcSelectionne(pc: Pc): void {
-    // Navigation vers la page résultats — à connecter avec le router
-    console.log('PC sélectionné :', pc);
+    this.router.navigate(['/resultats'], {
+      state: {
+        mode: 'expert',
+        profile: {
+          usage: 'bureautique',
+          budget: pc.prix,
+          mobilite: 'moyenne',
+          logiciels: []
+        }
+      }
+    });
   }
 }
