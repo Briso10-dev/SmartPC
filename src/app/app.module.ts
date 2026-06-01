@@ -16,6 +16,7 @@ import { AnswerChipComponent } from './answer-chip/answer-chip.component';
 import { EduTooltipComponent } from './edu-tooltip/edu-tooltip.component';
 import { QuestionCardComponent } from './question-card/question-card.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     AnswerChipComponent,
     EduTooltipComponent,
     QuestionCardComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

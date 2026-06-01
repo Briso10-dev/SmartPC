@@ -15,7 +15,7 @@
       max="3000"
       step="50"
       [(ngModel)]="prixMax"
-      (ngModelChange)="onPrixChange()"
+      (ngModelChange)="onChange()"
     />
     <div class="range-labels">
       <span>300 €</span>
@@ -28,13 +28,25 @@
   <div class="filter-section">
     <label class="section-label">Processeur (CPU)</label>
     <div class="checkbox-list">
-      <label class="checkbox-item" *ngFor="let opt of cpuOptions; let i = index">
-        <input
-          type="checkbox"
-          [checked]="opt.checked"
-          (change)="onCpuChange(i)"
-        />
-        <span>{{ opt.label }}</span>
+      <label class="checkbox-item">
+        <input type="radio" name="cpu" value="" [(ngModel)]="cpu" (ngModelChange)="onChange()" />
+        <span>Peu importe</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="cpu" value="i5" [(ngModel)]="cpu" (ngModelChange)="onChange()" />
+        <span>Intel Core i5</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="cpu" value="i7" [(ngModel)]="cpu" (ngModelChange)="onChange()" />
+        <span>Intel Core i7</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="cpu" value="ryzen" [(ngModel)]="cpu" (ngModelChange)="onChange()" />
+        <span>AMD Ryzen</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="cpu" value="apple" [(ngModel)]="cpu" (ngModelChange)="onChange()" />
+        <span>Apple Silicon</span>
       </label>
     </div>
   </div>
@@ -43,13 +55,17 @@
   <div class="filter-section">
     <label class="section-label">RAM minimum</label>
     <div class="checkbox-list">
-      <label class="checkbox-item" *ngFor="let opt of ramOptions">
-        <input
-          type="checkbox"
-          [(ngModel)]="opt.checked"
-          (ngModelChange)="onRamChange()"
-        />
-        <span>{{ opt.label }}</span>
+      <label class="checkbox-item">
+        <input type="radio" name="ram" [value]="8" [(ngModel)]="ramMin" (ngModelChange)="onChange()" />
+        <span>8 Go</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="ram" [value]="16" [(ngModel)]="ramMin" (ngModelChange)="onChange()" />
+        <span>16 Go</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="ram" [value]="32" [(ngModel)]="ramMin" (ngModelChange)="onChange()" />
+        <span>32 Go</span>
       </label>
     </div>
   </div>
@@ -58,13 +74,17 @@
   <div class="filter-section">
     <label class="section-label">Stockage minimum</label>
     <div class="checkbox-list">
-      <label class="checkbox-item" *ngFor="let opt of ssdOptions">
-        <input
-          type="checkbox"
-          [(ngModel)]="opt.checked"
-          (ngModelChange)="onSsdChange()"
-        />
-        <span>{{ opt.label }}</span>
+      <label class="checkbox-item">
+        <input type="radio" name="ssd" [value]="256" [(ngModel)]="ssdMin" (ngModelChange)="onChange()" />
+        <span>256 Go SSD</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="ssd" [value]="512" [(ngModel)]="ssdMin" (ngModelChange)="onChange()" />
+        <span>512 Go SSD</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="ssd" [value]="1000" [(ngModel)]="ssdMin" (ngModelChange)="onChange()" />
+        <span>1 To SSD</span>
       </label>
     </div>
   </div>
@@ -74,15 +94,15 @@
     <label class="section-label">Carte graphique</label>
     <div class="checkbox-list">
       <label class="checkbox-item">
-        <input type="radio" name="gpu" value="tous" [(ngModel)]="gpuType" (ngModelChange)="onGpuChange()" />
+        <input type="radio" name="gpu" value="tous" [(ngModel)]="gpuType" (ngModelChange)="onChange()" />
         <span>Peu importe</span>
       </label>
       <label class="checkbox-item">
-        <input type="radio" name="gpu" value="integree" [(ngModel)]="gpuType" (ngModelChange)="onGpuChange()" />
-        <span>Intégrée suffit</span>
+        <input type="radio" name="gpu" value="integree" [(ngModel)]="gpuType" (ngModelChange)="onChange()" />
+        <span>Intégrée</span>
       </label>
       <label class="checkbox-item">
-        <input type="radio" name="gpu" value="dediee" [(ngModel)]="gpuType" (ngModelChange)="onGpuChange()" />
+        <input type="radio" name="gpu" value="dediee" [(ngModel)]="gpuType" (ngModelChange)="onChange()" />
         <span>Dédiée (gaming / 3D)</span>
       </label>
     </div>
