@@ -1,0 +1,54 @@
+<div class="questionnaire">
+	<app-stepper [total]="3" [current]="step"></app-stepper>
+
+	<app-question-card
+		*ngIf="step === 1"
+		[title]="'A quoi va te servir ton ordinateur ?'"
+		[tooltip]="tooltipUsage"
+		[mode]="mode"
+	>
+		<app-answer-chip
+			*ngFor="let opt of usageOptions"
+			[label]="opt.label"
+			[selected]="userProfile.usage === opt.value"
+			(selectionChange)="selectUsage(opt.value)"
+		></app-answer-chip>
+	</app-question-card>
+
+	<app-question-card
+		*ngIf="step === 2"
+		[title]="'Quel est ton budget ?'"
+		[tooltip]="tooltipBudget"
+		[mode]="mode"
+	>
+		<app-answer-chip
+			*ngFor="let opt of budgetOptions"
+			[label]="opt.label"
+			[selected]="userProfile.budget === opt.value"
+			(selectionChange)="selectBudget(opt.value)"
+		></app-answer-chip>
+	</app-question-card>
+
+	<app-question-card
+		*ngIf="step === 3"
+		[title]="'Tu te deplaces souvent ?'"
+		[tooltip]="tooltipMobilite"
+		[mode]="mode"
+	>
+		<app-answer-chip
+			*ngFor="let opt of mobiliteOptions"
+			[label]="opt.label"
+			[selected]="userProfile.mobilite === opt.value"
+			(selectionChange)="selectMobilite(opt.value)"
+		></app-answer-chip>
+	</app-question-card>
+
+	<div class="actions">
+		<button type="button" class="btn ghost" (click)="prev()" [disabled]="step === 1">
+			Precedent
+		</button>
+		<button type="button" class="btn" (click)="next()" [disabled]="!canGoNext()">
+			{{ step === 3 ? 'Voir les resultats' : 'Suivant' }}
+		</button>
+	</div>
+</div>

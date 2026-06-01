@@ -11,6 +11,11 @@ import { StoreLocatorComponent } from './store-locator/store-locator.component';
 import { ResultatComponent } from './resultat/resultat.component';
 import { FilterPanelComponent } from './filter-panel/filter-panel.component';
 import { ExpertComponent } from './expert/expert.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { AnswerChipComponent } from './answer-chip/answer-chip.component';
+import { EduTooltipComponent } from './edu-tooltip/edu-tooltip.component';
+import { QuestionCardComponent } from './question-card/question-card.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import { ExpertComponent } from './expert/expert.component';
     StoreLocatorComponent,
     ResultatComponent,
     FilterPanelComponent,
-    ExpertComponent
+    ExpertComponent,
+    StepperComponent,
+    AnswerChipComponent,
+    EduTooltipComponent,
+    QuestionCardComponent,
+    QuestionnaireComponent
   ],
   imports: [
     BrowserModule,

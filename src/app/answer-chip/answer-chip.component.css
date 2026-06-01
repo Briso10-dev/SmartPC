@@ -1,0 +1,21 @@
+:host {
+	display: inline-block;
+	font-family: Georgia, serif;
+}
+
+.chip {
+	padding: 6px 12px;
+	border-radius: 16px;
+	border: 1px solid #c8c8c8;
+	background: #ffffff;
+	color: #333333;
+	font-size: 13px;
+	cursor: pointer;
+	transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.chip.selected {
+	background: #d6e4f7;
+	border-color: #1f5fa6;
+	color: #1f5fa6;
+}

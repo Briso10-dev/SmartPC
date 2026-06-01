@@ -1,0 +1,27 @@
+:host {
+	display: block;
+	font-family: Georgia, serif;
+}
+
+.question-card {
+	background: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.question-title {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+	color: #2c2c2a;
+}
+
+.answers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}

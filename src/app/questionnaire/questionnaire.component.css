@@ -1,0 +1,39 @@
+:host {
+	display: block;
+	font-family: Georgia, serif;
+}
+
+.questionnaire {
+	max-width: 640px;
+	margin: 24px auto;
+	padding: 0 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.btn {
+	background: #1f5fa6;
+	color: #ffffff;
+	border: none;
+	border-radius: 6px;
+	padding: 8px 14px;
+	cursor: pointer;
+}
+
+.btn.ghost {
+	background: #ffffff;
+	color: #1f5fa6;
+	border: 1px solid #1f5fa6;
+}
+
+.btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
