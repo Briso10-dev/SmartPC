@@ -14,14 +14,14 @@
 }
 
 .pc-image {
-  height: 120px;
+  height: 140px;
   background: #f2f2f2;
 }
 
 .pc-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
