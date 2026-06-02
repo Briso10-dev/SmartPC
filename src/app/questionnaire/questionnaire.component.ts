@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AppMode, ModeService } from '../services/mode.service';
+import { ModeService, AppMode } from '../services/mode.service';
 import { UserProfile } from '../models/user-profile.model';
 
 @Component({
@@ -10,79 +9,102 @@ import { UserProfile } from '../models/user-profile.model';
   templateUrl: './questionnaire.component.html',
   styleUrls: ['./questionnaire.component.css']
 })
-export class QuestionnaireComponent {
+export class QuestionnaireComponent implements OnInit {
 
-  public step: number = 1;
+  public currentStep: number = 1;
   public mode: AppMode = 'simple';
 
   public userProfile: UserProfile = {
     usage: '',
-    budget: 0,
+    budget: 1000,
     mobilite: '',
     logiciels: []
   };
 
   public usageOptions = [
-    { label: 'Bureautique', value: 'bureautique' },
-    { label: 'Jeux video', value: 'jeux' },
-    { label: 'Creation', value: 'creation' },
-    { label: 'Etudes', value: 'etudes' }
-  ];
-
-  public budgetOptions = [
-    { label: 'Moins de 600€', value: 600 },
-    { label: '600€ – 1000€', value: 1000 },
-    { label: 'Plus de 1000€', value: 1500 }
+    { label: 'Jeux vidéo',        value: 'jeux' },
+    { label: 'Graphisme',         value: 'creation' },
+    { label: 'Programmation',     value: 'bureautique' },
+    { label: 'Bureautique',       value: 'bureautique' },
+    { label: 'Modél. 3D',         value: 'creation' },
+    { label: 'Vidéo / Streaming', value: 'creation' }
   ];
 
   public mobiliteOptions = [
-    { label: 'Oui, tous les jours', value: 'fort' },
-    { label: 'Parfois', value: 'moyen' },
-    { label: 'Non, bureau fixe', value: 'faible' }
+    { label: 'Portable', value: 'fort' },
+    { label: 'Fixe',     value: 'faible' }
   ];
 
-  public tooltipUsage =
-    "Ton usage determine la puissance du processeur (CPU). Jeux video = CPU puissant, bureautique = CPU basique suffit.";
-  public tooltipBudget =
-    "Le budget determine la gamme de composants accessibles. Un bon SSD NVMe coute ~80€ de plus mais est 5x plus rapide.";
-  public tooltipMobilite =
-    "La mobilite impacte l'autonomie et le poids. Ultrabook (~1.2kg, 12h) vs laptop gaming (~2.5kg, 3h).";
+  public logicielsOptions = [
+    { label: 'Office / Word',    value: 'office' },
+    { label: 'Photoshop',        value: 'photoshop' },
+    { label: 'Visual Studio',    value: 'vscode' },
+    { label: 'Blender',          value: 'blender' },
+    { label: 'Premiere Pro',     value: 'premiere' },
+    { label: 'Navigateur web',   value: 'web' }
+  ];
 
-  public constructor(private router: Router, private modeService: ModeService) {
+  public tooltips = {
+    usage:    'Ton usage détermine la puissance du processeur (CPU). Jeux vidéo = CPU puissant, bureautique = CPU basique suffit.',
+    budget:   "Il s'agit d'un budget indicatif. Un bon SSD NVMe coûte ~80€ de plus mais est 5× plus rapide.",
+    mobilite: 'Un portable est très mobile mais peu modulable. Un fixe offre plus de puissance pour le même budget.',
+    logiciels:'Les logiciels lourds (Blender, Premiere) demandent plus de RAM et un GPU dédié.'
+  };
+
+  constructor(
+    private readonly router: Router,
+    private readonly modeService: ModeService
+  ) {}
+
+  public ngOnInit(): void {
     this.mode = this.modeService.getMode();
   }
 
-  public selectUsage(value: string): void {
-    this.userProfile.usage = value;
-  }
-
-  public selectBudget(value: number): void {
-    this.userProfile.budget = value;
-  }
-
-  public selectMobilite(value: string): void {
-    this.userProfile.mobilite = value;
-  }
-
-  public canGoNext(): boolean {
-    if (this.step === 1) return this.userProfile.usage !== '';
-    if (this.step === 2) return this.userProfile.budget > 0;
-    return this.userProfile.mobilite !== '';
-  }
-
-  public next(): void {
-    if (!this.canGoNext()) return;
-    if (this.step < 3) {
-      this.step += 1;
-      return;
+  public get budgetWarning(): string {
+    const highDemand = ['jeux', 'creation'];
+    if (highDemand.includes(this.userProfile.usage) && this.userProfile.budget < 800) {
+      return `Attention : ce budget peut être insuffisant pour un usage "${this.userProfile.usage}".`;
     }
-
-    this.router.navigate(['/resultats'], {
-      state: { profile: this.userProfile, mode: this.mode }
-    });
+    return '';
   }
 
-  public prev(): void {
-    if (this.step > 1) this.step -= 1;
+  public isLogicielSelected(value: string): boolean {
+    return this.userProfile.logiciels.includes(value);
+  }
+
+  public toggleLogiciel(value: string): void {
+    const idx = this.userProfile.logiciels.indexOf(value);
+    if (idx === -1) {
+      this.userProfile.logiciels = [...this.userProfile.logiciels, value];
+    } else {
+      this.userProfile.logiciels = this.userProfile.logiciels.filter(v => v !== value);
+    }
+  }
+
+  public canProceed(): boolean {
+    switch (this.currentStep) {
+      case 1: return this.userProfile.usage !== '';
+      case 2: return this.userProfile.budget > 0;
+      case 3: return this.userProfile.mobilite !== '';
+      case 4: return true;
+      default: return false;
+    }
+  }
+
+  public suivant(): void {
+    if (!this.canProceed()) return;
+    if (this.currentStep < 4) {
+      this.currentStep++;
+    } else {
+      this.router.navigate(['/resultats'], {
+        state: { profile: this.userProfile }
+      });
+    }
+  }
+
+  public retour(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
   }
 }

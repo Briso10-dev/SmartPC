@@ -1,7 +1,15 @@
 <div class="question-card">
-	<h2 class="question-title">{{ title }}</h2>
-	<app-edu-tooltip *ngIf="mode === 'guided'" [text]="tooltip"></app-edu-tooltip>
-	<div class="answers">
-		<ng-content></ng-content>
-	</div>
+  <div class="card-header">
+    <h2 class="question-title">{{ title }}</h2>
+    <div class="help-icon">?</div>
+  </div>
+
+  <div class="answers">
+    <ng-content></ng-content>
+  </div>
+
+  <app-edu-tooltip
+    *ngIf="mode === 'guided' && tooltip"
+    [text]="tooltip"
+  ></app-edu-tooltip>
 </div>
