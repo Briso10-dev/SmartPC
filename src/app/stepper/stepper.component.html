@@ -1,0 +1,12 @@
+<div class="stepper">
+  <ng-container *ngFor="let step of steps; let last = last">
+    <div
+      class="step-circle"
+      [class.active]="isActive(step)"
+      [class.complete]="isComplete(step)"
+    >
+      {{ step }}
+    </div>
+    <div *ngIf="!last" class="step-line" [class.line-done]="isComplete(step + 1)"></div>
+  </ng-container>
+</div>

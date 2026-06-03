@@ -1,0 +1,71 @@
+.expert-page {
+  min-height: 100vh;
+  background: #f8f8f6;
+  padding: 24px;
+  font-family: Georgia, serif;
+}
+
+.expert-header {
+  margin-bottom: 24px;
+}
+
+.expert-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c2c2a;
+  margin: 0 0 6px;
+}
+
+.expert-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.expert-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.results-zone {
+  flex: 1;
+  min-width: 0;
+}
+
+.results-header {
+  margin-bottom: 16px;
+}
+
+.results-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c2c2a;
+}
+
+.pc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.no-results p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.disclaimer {
+  margin-top: 24px;
+  font-size: 11px;
+  color: #bbb;
+  text-align: center;
+}

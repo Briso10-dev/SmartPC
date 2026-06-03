@@ -1,11 +1,12 @@
 import { Pc } from '../models/pc.model';
 
+
 export const PC_CATALOGUE: Pc[] = [
   {
     id: 1,
     nom: 'Dell XPS 13',
     prix: 1149,
-    image: 'assets/pcs/dell-xps-13.jpg',
+    image: 'assets/pcs/dell-xps-13.png',
     specs: {
       ram: 16,
       cpu: 'Intel Core i7-1355U',
@@ -26,7 +27,7 @@ export const PC_CATALOGUE: Pc[] = [
     id: 2,
     nom: 'Asus TUF Gaming A15',
     prix: 1299,
-    image: 'assets/pcs/asus-tuf-a15.jpg',
+    image: 'assets/pcs/asus-tuf-a15.webp',
     specs: {
       ram: 16,
       cpu: 'AMD Ryzen 7 7735HS',
@@ -47,7 +48,7 @@ export const PC_CATALOGUE: Pc[] = [
     id: 3,
     nom: 'Lenovo IdeaPad Slim 5',
     prix: 749,
-    image: 'assets/pcs/lenovo-ideapad-slim-5.jpg',
+    image: 'assets/pcs/lenovo-ideapad-slim-5.png',
     specs: {
       ram: 8,
       cpu: 'Intel Core i5-1335U',
@@ -68,7 +69,7 @@ export const PC_CATALOGUE: Pc[] = [
     id: 4,
     nom: 'HP Pavilion 15',
     prix: 599,
-    image: 'assets/pcs/hp-pavilion-15.jpg',
+    image: 'assets/pcs/hp-pavilion-15.png',
     specs: {
       ram: 8,
       cpu: 'AMD Ryzen 5 7520U',
@@ -110,7 +111,7 @@ export const PC_CATALOGUE: Pc[] = [
     id: 6,
     nom: 'Acer Swift 3',
     prix: 699,
-    image: 'assets/pcs/acer-swift-3.jpg',
+    image: 'assets/pcs/acer-swift-3.jpeg',
     specs: {
       ram: 16,
       cpu: 'Intel Core i5-1240P',

@@ -1,0 +1,101 @@
+<div class="questionnaire-page">
+
+  <header class="q-header">
+    <span class="brand">SmartPC</span>
+  </header>
+
+  <div class="stepper-wrapper">
+    <app-stepper [total]="4" [current]="currentStep"></app-stepper>
+  </div>
+
+  <main class="q-main">
+
+    <!-- Étape 1 : Usage -->
+    <ng-container *ngIf="currentStep === 1">
+      <app-question-card
+        title="Pourquoi utilisez-vous un ordinateur ?"
+        [tooltip]="tooltips.usage"
+        [mode]="mode"
+      >
+        <app-answer-chip
+          *ngFor="let opt of usageOptions"
+          [label]="opt.label"
+          [selected]="userProfile.usage === opt.value"
+          (selectionChange)="userProfile.usage = opt.value"
+        ></app-answer-chip>
+      </app-question-card>
+    </ng-container>
+
+    <!-- Étape 2 : Budget (slider) -->
+    <ng-container *ngIf="currentStep === 2">
+      <app-question-card
+        title="Quel budget vous conviendrait ?"
+        [tooltip]="tooltips.budget"
+        [mode]="mode"
+      >
+        <div class="slider-wrapper">
+          <div class="slider-labels">
+            <span>100€</span>
+            <span>1 000€</span>
+            <span>10 000€</span>
+            <span>100 000€</span>
+          </div>
+          <input
+            type="range"
+            min="100"
+            max="100000"
+            step="50"
+            [(ngModel)]="userProfile.budget"
+            class="budget-slider"
+          />
+          <div class="budget-value">{{ userProfile.budget | currency:'EUR':'symbol':'1.0-0' }}</div>
+          <p *ngIf="budgetWarning" class="budget-warning">{{ budgetWarning }}</p>
+        </div>
+      </app-question-card>
+    </ng-container>
+
+    <!-- Étape 3 : Mobilité -->
+    <ng-container *ngIf="currentStep === 3">
+      <app-question-card
+        title="Voulez-vous une machine portable ou fixe ?"
+        [tooltip]="tooltips.mobilite"
+        [mode]="mode"
+      >
+        <app-answer-chip
+          *ngFor="let opt of mobiliteOptions"
+          [label]="opt.label"
+          [selected]="userProfile.mobilite === opt.value"
+          (selectionChange)="userProfile.mobilite = opt.value"
+        ></app-answer-chip>
+      </app-question-card>
+    </ng-container>
+
+    <!-- Étape 4 : Logiciels -->
+    <ng-container *ngIf="currentStep === 4">
+      <app-question-card
+        title="Quels logiciels utilisez-vous ?"
+        [tooltip]="tooltips.logiciels"
+        [mode]="mode"
+      >
+        <app-answer-chip
+          *ngFor="let opt of logicielsOptions"
+          [label]="opt.label"
+          [selected]="isLogicielSelected(opt.value)"
+          (selectionChange)="toggleLogiciel(opt.value)"
+        ></app-answer-chip>
+      </app-question-card>
+    </ng-container>
+
+  </main>
+
+  <footer class="q-footer">
+    <button class="btn-retour" (click)="retour()" *ngIf="currentStep > 1">
+      Retour →
+    </button>
+    <span *ngIf="currentStep === 1"></span>
+    <button class="btn-suivant" (click)="suivant()" [disabled]="!canProceed()">
+      {{ currentStep === 4 ? 'Voir les résultats' : 'Suivant →' }}
+    </button>
+  </footer>
+
+</div>

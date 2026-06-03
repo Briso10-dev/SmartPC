@@ -1,0 +1,49 @@
+<div class="expert-page">
+
+  <header class="expert-header">
+    <h1 class="expert-title">Mode expert</h1>
+    <p class="expert-subtitle">Filtrez par caractéristiques techniques · Les résultats se mettent à jour en temps réel</p>
+  </header>
+
+  <div class="expert-layout">
+
+    <!-- Sidebar filtres -->
+    <app-filter-panel
+      (filtresChange)="onFiltresChange($event)">
+    </app-filter-panel>
+
+    <!-- Zone résultats -->
+    <main class="results-zone">
+
+      <div class="results-header">
+        <span class="results-count">
+          {{ pcsFiltres.length }} PC
+          {{ pcsFiltres.length > 1 ? 'correspondent' : 'correspond' }}
+          à vos critères
+        </span>
+      </div>
+
+      <!-- Aucun résultat -->
+      <div class="no-results" *ngIf="pcsFiltres.length === 0">
+        <p>Aucun PC ne correspond à vos critères.</p>
+        <p>Essayez d'élargir votre budget ou d'assouplir vos filtres.</p>
+      </div>
+
+      <!-- Liste des PC -->
+      <div class="pc-grid" *ngIf="pcsFiltres.length > 0">
+        <app-pc-card
+          *ngFor="let pc of pcsFiltres"
+          [pc]="pc"
+          (pcSelectionne)="onPcSelectionne($event)">
+        </app-pc-card>
+      </div>
+
+      <p class="disclaimer">
+        PC Advisor ne vend rien · Nous redirigeons vers les revendeurs officiels
+      </p>
+
+    </main>
+
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+:host {
+	display: block;
+	font-family: Georgia, serif;
+}
+
+.tooltip {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+	background: #d6e4f7;
+	border: 1px solid #1f5fa6;
+	border-radius: 8px;
+	padding: 10px 12px;
+}
+
+.icon {
+	font-size: 14px;
+	line-height: 1.2;
+}
+
+.content {
+	margin: 0;
+	font-size: 12px;
+	color: #1f5fa6;
+}
