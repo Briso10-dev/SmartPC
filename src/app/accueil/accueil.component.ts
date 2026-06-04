@@ -10,17 +10,11 @@ import { ModeService, AppMode } from '../services/mode.service';
 })
 export class AccueilComponent {
 
-  public modeSelectionne: AppMode = 'guided';
-
   constructor(private router: Router, private modeService: ModeService) {}
 
-  public selectionner(mode: AppMode): void {
-    this.modeSelectionne = mode;
-  }
-
-  public commencer(): void {
-    this.modeService.setMode(this.modeSelectionne);
-    if (this.modeSelectionne === 'expert') {
+  public choisirMode(mode: AppMode): void {
+    this.modeService.setMode(mode);
+    if (mode === 'expert') {
       this.router.navigate(['/expert']);
     } else {
       this.router.navigate(['/questionnaire']);
