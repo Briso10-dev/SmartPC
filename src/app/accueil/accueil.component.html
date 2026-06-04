@@ -3,7 +3,7 @@
   <header class="hero">
     <h1 class="hero-title">Trouvez votre PC idéal</h1>
     <p class="hero-subtitle">
-      PC Advisor analyse vos besoins et vous recommande le meilleur ordinateur.
+      SmartPC analyse vos besoins et vous recommande le meilleur ordinateur.
       Nous vous indiquons aussi où le trouver près de chez vous.
     </p>
   </header>
@@ -13,47 +13,41 @@
 
     <div class="cards">
 
-        <div class="mode-card" 
-            [class.mode-card--featured]="modeSelectionne === 'simple'"
-            (click)="selectionner('simple')">
-            <span class="mode-badge" *ngIf="modeSelectionne === 'simple'">Sélectionné</span>
-            <div class="mode-icon">🖱️</div>
-            <h3 class="mode-name">Mode simple</h3>
-            <p class="mode-desc">Quelques questions sur votre usage au quotidien. Pas de jargon technique.</p>
-            <button class="mode-btn" [class.mode-btn--featured]="modeSelectionne === 'simple'" (click)="commencer()">
-            Commencer →
-            </button>
-        </div>
+      <div class="mode-card">
+        <div class="mode-icon">🖱️</div>
+        <h3 class="mode-name">Mode simple</h3>
+        <p class="mode-desc">
+          Quelques questions sur votre usage au quotidien.
+          Pas de jargon technique.
+        </p>
+        <button class="mode-btn" (click)="choisirMode('simple')">Commencer →</button>
+      </div>
 
-        <div class="mode-card"
-            [class.mode-card--featured]="modeSelectionne === 'guided'"
-            (click)="selectionner('guided')">
-            <span class="mode-badge" *ngIf="modeSelectionne === 'guided'">Sélectionné</span>
-            <div class="mode-icon">📖</div>
-            <h3 class="mode-name">Mode guidé</h3>
-            <p class="mode-desc">Mêmes questions simples, mais on vous explique l'impact de chaque choix sur les composants.</p>
-            <button class="mode-btn" [class.mode-btn--featured]="modeSelectionne === 'guided'" (click)="commencer()">
-            Commencer →
-            </button>
-        </div>
+      <div class="mode-card">
+        <div class="mode-icon">📖</div>
+        <h3 class="mode-name">Mode guidé</h3>
+        <p class="mode-desc">
+          Mêmes questions simples, mais on vous explique
+          l'impact de chaque choix sur les composants.
+        </p>
+        <button class="mode-btn" (click)="choisirMode('guided')">Commencer →</button>
+      </div>
 
-        <div class="mode-card"
-            [class.mode-card--featured]="modeSelectionne === 'expert'"
-            (click)="selectionner('expert')">
-            <span class="mode-badge" *ngIf="modeSelectionne === 'expert'">Sélectionné</span>
-            <div class="mode-icon">🔧</div>
-            <h3 class="mode-name">Mode expert</h3>
-            <p class="mode-desc">Vous connaissez les specs. Filtrez directement par RAM, CPU, GPU, stockage...</p>
-            <button class="mode-btn" [class.mode-btn--featured]="modeSelectionne === 'expert'" (click)="commencer()">
-            Commencer →
-            </button>
-        </div>
+      <div class="mode-card">
+        <div class="mode-icon">🔧</div>
+        <h3 class="mode-name">Mode expert</h3>
+        <p class="mode-desc">
+          Vous connaissez les specs. Filtrez directement
+          par RAM, CPU, GPU, stockage...
+        </p>
+        <button class="mode-btn" (click)="choisirMode('expert')">Commencer →</button>
+      </div>
 
     </div>
   </section>
 
   <footer class="footer">
-    PC Advisor — Comparateur indépendant · Nous ne vendons rien
+    SmartPC — Comparateur indépendant · Nous ne vendons rien
   </footer>
 
 </div>
